@@ -1,7 +1,17 @@
+"use client";
+import { useRouter } from "next/navigation";
 import { Button } from "~/app/components/Button";
 import { Input } from "~/app/components/Input";
 
 export default function Login() {
+	const router = useRouter();
+
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		// TODO: Auth before redirecting
+		router.push("/");
+	};
+
 	return (
 		<main className="flex flex-col font-sans items-center mt-16">
 			<div className="w-full max-w-2xl grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -14,7 +24,10 @@ export default function Login() {
 				</section>
 				<section className="flex flex-col justify-center items-center p-6">
 					{/* Right column content */}
-					<form className="w-full max-w-sm flex flex-col gap-4">
+					<form
+						className="w-full max-w-sm flex flex-col gap-4"
+						onSubmit={handleSubmit}
+					>
 						<Input type="email" placeholder="Email" />
 						<Input type="password" placeholder="Password" />
 						<Button type="submit">Sign in</Button>
