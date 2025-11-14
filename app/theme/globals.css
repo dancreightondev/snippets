@@ -1,14 +1,15 @@
 @import "tailwindcss";
+@import "./colors.css";
 
 :root {
-	--background: var(--color-gray-50);
-	--foreground: var(--color-gray-950);
+	--background: var(--color-charade-50);
+	--foreground: var(--color-charade-950);
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--background: var(--color-gray-950);
-		--foreground: var(--color-gray-50);
+		--background: var(--color-charade-950);
+		--foreground: var(--color-charade-50);
 	}
 }
 
