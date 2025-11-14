@@ -1,3 +1,6 @@
+import { Button } from "~/app/components/Button";
+import { Input } from "~/app/components/Input";
+
 export default function Login() {
 	return (
 		<main className="flex flex-col font-sans items-center mt-16">
@@ -12,22 +15,9 @@ export default function Login() {
 				<section className="flex flex-col justify-center items-center p-6">
 					{/* Right column content */}
 					<form className="w-full max-w-sm flex flex-col gap-4">
-						<input
-							type="email"
-							placeholder="Email"
-							className="border rounded px-4 py-2"
-						/>
-						<input
-							type="password"
-							placeholder="Password"
-							className="border rounded px-4 py-2"
-						/>
-						<button
-							type="submit"
-							className="bg-primary text-background rounded px-4 py-2 font-semibold"
-						>
-							Login
-						</button>
+						<Input type="email" placeholder="Email" />
+						<Input type="password" placeholder="Password" />
+						<Button type="submit">Sign in</Button>
 					</form>
 				</section>
 			</div>
