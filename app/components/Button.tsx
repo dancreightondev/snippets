@@ -15,7 +15,7 @@ const variants = cva(
 				primary: "", // no class names are shared between all `intent="primary"` combinations
 				danger: "", // no class names are shared between all `intent="danger"` combinations
 			},
-			size: {
+			displaySize: {
 				sm: "px-3 py-1 text-sm",
 				md: "px-4 py-2 text-base",
 				lg: "px-6 py-3 text-lg",
@@ -65,7 +65,7 @@ const variants = cva(
 		defaultVariants: {
 			appearance: "filled",
 			intent: "primary",
-			size: "md",
+			displaySize: "md",
 			rounded: "md",
 		},
 	}
@@ -91,7 +91,7 @@ export const Button: FC<ButtonProps> = forwardRef<
 			type,
 			appearance,
 			intent,
-			size,
+			displaySize,
 			rounded,
 			...props
 		},
@@ -104,7 +104,7 @@ export const Button: FC<ButtonProps> = forwardRef<
 					variants({
 						appearance,
 						intent,
-						size,
+						displaySize,
 						rounded,
 						className,
 					})
