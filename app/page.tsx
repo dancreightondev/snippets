@@ -1,9 +1,7 @@
 export default function Home() {
 	return (
-		<main className="flex min-h-screen items-center justify-center bg-zinc-50 dark:bg-black">
-			<h1 className="text-2xl font-sans text-black dark:text-zinc-50">
-				Placeholder Page
-			</h1>
+		<main className="flex min-h-screen items-center justify-center">
+			<h1 className="text-2xl font-sans">Placeholder Page</h1>
 		</main>
 	);
 }
