@@ -7,7 +7,7 @@ const variants = cva(
 	{
 		variants: {
 			appearance: {
-				filled: "focus:inset-ring-2", // no class names are shared between all `appearance="filled"` combinations
+				filled: "focus:inset-ring-2",
 				outlined: "bg-transparent border focus:border-background",
 				text: "bg-transparent border-none shadow-none hover:underline",
 			},
