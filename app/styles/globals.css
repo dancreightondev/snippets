@@ -4,18 +4,31 @@
 :root {
 	--background: var(--color-charade-50);
 	--foreground: var(--color-charade-950);
+	--primary-light: var(--color-steel-300);
+	--primary: var(--color-steel-500);
+	--primary-dark: var(--color-steel-700);
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
 		--background: var(--color-charade-950);
 		--foreground: var(--color-charade-50);
+		--primary-light: var(--color-steel-50);
+		--primary: var(--color-steel-200);
+		--primary-dark: var(--color-steel-400);
 	}
 }
 
 @theme inline {
 	--color-background: var(--background);
+	--color-midground: var(--color-charade-500);
 	--color-foreground: var(--foreground);
+	--color-primary-light: var(--primary-light);
+	--color-primary: var(--primary);
+	--color-primary-dark: var(--primary-dark);
+	--color-danger: var(--color-hippie-500);
+	--color-success: var(--color-apple-500);
+	--color-warning: var(--color-earl-500);
 	--font-sans: var(--font-atkinson-hl-sans);
 	--font-mono: var(--font-atkinson-hl-mono);
 }
