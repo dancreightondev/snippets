@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import {
+	Atkinson_Hyperlegible_Next,
+	Atkinson_Hyperlegible_Mono,
+} from "next/font/google";
 import "./theme/globals.css";
 
-const geistSans = Geist({
-	variable: "--font-geist-sans",
+const ahlSans = Atkinson_Hyperlegible_Next({
+	variable: "--font-atkinson-hl-sans",
 	subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
+const ahlMono = Atkinson_Hyperlegible_Mono({
+	variable: "--font-atkinson-hl-mono",
 	subsets: ["latin"],
 });
 
@@ -25,7 +28,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+				className={`${ahlSans.variable} ${ahlMono.variable} antialiased`}
 			>
 				{children}
 			</body>
