@@ -1,3 +1,15 @@
+/* 
+
+charade is generated based off dracula's background colour: https://draculatheme.com/contribute
+
+hippie and apple are triadic derivatives
+earl is a tetradic derivative
+steel is an analogous derivative
+
+https://www.tints.dev/palette/v1:Y2hhcmFkZXwyQjJFM0F8ODAwfHB8MHwwfDB8MTAwfG1-aGlwcGllfDM2MjgyQXw4MDB8bHwwfDV8MHwxMDB8bX5hcHBsZXwyQTM2Mjh8ODAwfGx8MHw1fDB8MTAwfG1-ZWFybHwzNjM0Mjh8ODAwfGx8MHw4fDB8MTAwfG1-c3RlZWx8MjgzMTM2fDgwMHxsfDB8NXwwfDEwMHxt
+
+*/
+
 @theme {
 	--color-charade-50: #f0f1f4;
 	--color-charade-100: #e2e3e9;
