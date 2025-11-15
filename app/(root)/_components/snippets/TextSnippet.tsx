@@ -16,6 +16,8 @@ export const TextSnippet: FC<TextSnippetProps> = ({
 	name,
 	text,
 	className,
+	draggableId,
+	paletted,
 	...props
 }) => {
 	return (
@@ -23,6 +25,8 @@ export const TextSnippet: FC<TextSnippetProps> = ({
 			name={name}
 			icon={<BsJustifyLeft />}
 			className={twClassMerge(className)}
+			draggableId={draggableId}
+			paletted={paletted}
 			{...props}
 		>
 			{text}
