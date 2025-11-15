@@ -4,25 +4,21 @@ export const APP_NAME = "snippets.zip";
 export const ALL_PALETTE_SNIPPETS: SnippetData[] = [
 	{
 		id: "textSnippet",
-		type: "text",
 		name: "Text",
 		text: "Type something here...",
 	},
 	{
 		id: "codeSnippet",
-		type: "code",
 		name: "Code",
 		code: "print('Hello world!')",
 	},
 	{
 		id: "checklistSnippet",
-		type: "checklist",
 		name: "Checklist",
 		items: ["Wake up", "Brush teeth", "Go to work"],
 	},
 	{
 		id: "xpGoalSnippet",
-		type: "xp-goal",
 		name: "XP Goal",
 		currentXp: 501,
 		targetXp: 1024,

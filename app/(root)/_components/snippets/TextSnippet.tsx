@@ -16,12 +16,10 @@ export const TextSnippet: FC<TextSnippetProps> = ({
 	name,
 	text,
 	className,
-	id,
 	...props
 }) => {
 	return (
 		<BaseSnippet
-			id={id}
 			name={name}
 			icon={<BsJustifyLeft />}
 			className={twClassMerge(className)}

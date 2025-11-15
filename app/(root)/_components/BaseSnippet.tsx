@@ -12,6 +12,7 @@ export interface BaseSnippetProps extends React.HTMLAttributes<HTMLDivElement> {
 	name: string;
 	icon?: SnippetIcon;
 	paletted?: boolean;
+	draggableId: string;
 }
 
 export const BaseSnippet: FC<BaseSnippetProps> = ({
@@ -20,11 +21,11 @@ export const BaseSnippet: FC<BaseSnippetProps> = ({
 	paletted,
 	children,
 	className,
-	id,
+	draggableId,
 	...props
 }) => {
 	const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
-		id: id ?? name,
+		id: draggableId,
 	});
 	if (paletted) {
 		return (

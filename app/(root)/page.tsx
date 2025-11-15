@@ -33,14 +33,9 @@ export default function Home() {
 
 	const handleSnippetDrop = (snippetId: string | null) => {
 		if (snippetId) {
-			const snippet = PALETTE_SNIPPETS[snippetId];
-			console.log("Dropping snippet:", snippet);
+			const snippet = PALETTE_SNIPPETS[snippetId]; // snippetId is now always type
 			if (snippet) {
-				const uniqueKey = `${snippet.id}-${Date.now()}-${Math.random()}`;
-				const rendered = renderSnippet(
-					{ ...snippet, id: uniqueKey },
-					false
-				);
+				const rendered = renderSnippet(snippet, false);
 				if (rendered) {
 					setCanvasSnippets((prev) => [...prev, rendered]);
 				}
