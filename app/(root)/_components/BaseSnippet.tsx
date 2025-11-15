@@ -5,7 +5,7 @@ import { FC, isValidElement } from "react";
 import { twClassMerge } from "~/app/utils/tailwind";
 import { SnippetIcon } from "~/app/lib/types";
 import { useDraggable } from "@dnd-kit/core";
-import { TbQuestionMark } from "react-icons/tb";
+import { TbQuestionMark, TbX, TbDots } from "react-icons/tb";
 
 export interface BaseSnippetProps extends React.HTMLAttributes<HTMLDivElement> {
 	// Custom props go here
@@ -27,6 +27,8 @@ export const BaseSnippet: FC<BaseSnippetProps> = ({
 	const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
 		id: draggableId,
 	});
+
+	// Palette appearance
 	if (paletted) {
 		return (
 			<div
@@ -62,10 +64,45 @@ export const BaseSnippet: FC<BaseSnippetProps> = ({
 			</div>
 		);
 	}
+
+	// Canvas appearance
 	return (
-		<div>
-			<span className="font-bold mb-2 block">{name}</span>
-			{children}
+		<div
+			className={twClassMerge(
+				className,
+				"flex flex-col items-center justify-center transition duration-60"
+			)}
+		>
+			<div className="bg-primary/10 rounded-lg my-2 w-full">
+				<div
+					id="snippet-header"
+					className="py-2 px-3 text-midground flex flex-row items-center justify-between"
+				>
+					<span id="snippet-title" className="flex">
+						{name}
+					</span>
+					<span id="snippet-buttons" className="flex gap-2">
+						<button
+							id="snippet-options"
+							className="hover:cursor-pointer hover:text-primary"
+						>
+							<TbDots />
+						</button>
+						<button
+							id="snippet-remove"
+							className="hover:cursor-pointer hover:text-danger"
+						>
+							<TbX />
+						</button>
+					</span>
+				</div>
+				<div
+					id="snippet-content"
+					className="bg-background m-2 mt-0 p-4 rounded-sm"
+				>
+					{children}
+				</div>
+			</div>
 		</div>
 	);
 };
