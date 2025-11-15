@@ -7,6 +7,8 @@
 	--primary-light: var(--color-steel-300);
 	--primary: var(--color-steel-500);
 	--primary-dark: var(--color-steel-700);
+
+	@apply select-none;
 }
 
 @media (prefers-color-scheme: dark) {
