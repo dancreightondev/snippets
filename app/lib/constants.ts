@@ -5,7 +5,6 @@ export const ALL_PALETTE_SNIPPETS: SnippetData[] = [
 	{
 		id: "textSnippet",
 		name: "Text",
-		text: "Type something here...",
 	},
 	{
 		id: "codeSnippet",
