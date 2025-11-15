@@ -22,18 +22,18 @@ export default function Home() {
 	return (
 		<main className="flex min-h-screen items-center justify-center font-sans">
 			<DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-				<BaseSnippet
-					name="Test Snippet"
-					childElement={<span>Snippet content</span>}
-				/>
+				<BaseSnippet name="Test Snippet">
+					<span>Snippet content</span>
+				</BaseSnippet>
 				<Canvas onSnippetDrop={() => {}} className="size-full" />
 				<DragOverlay>
 					{activeId ? (
 						<BaseSnippet
 							name="Test Snippet"
-							childElement={<span>Snippet content</span>}
 							className="pointer-events-none opacity-80"
-						/>
+						>
+							<span>Snippet content</span>
+						</BaseSnippet>
 					) : null}
 				</DragOverlay>
 			</DndContext>

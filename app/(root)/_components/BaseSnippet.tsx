@@ -7,12 +7,11 @@ import { useDraggable } from "@dnd-kit/core";
 interface BaseSnippetProps extends React.HTMLAttributes<HTMLDivElement> {
 	// Custom props go here
 	name: string;
-	childElement: React.ReactElement;
 }
 
 export const BaseSnippet: FC<BaseSnippetProps> = ({
 	name,
-	childElement,
+	children,
 	className,
 	...props
 }) => {
@@ -35,7 +34,7 @@ export const BaseSnippet: FC<BaseSnippetProps> = ({
 			{...props}
 		>
 			<span className="font-bold mb-2 block">{name}</span>
-			{childElement}
+			{children}
 		</div>
 	);
 };
