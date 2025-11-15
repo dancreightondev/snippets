@@ -1,41 +1,76 @@
 "use client";
 
 import { DndContext, DragEndEvent, DragOverlay } from "@dnd-kit/core";
-import { BaseSnippet } from "./_components/BaseSnippet";
 import { Canvas } from "./_components/Canvas";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Palette } from "./_components/Palette";
+import { PALETTE_SNIPPETS } from "~/app/lib/constants";
+import { renderSnippet } from "./_utils/snippets";
 
 export default function Home() {
 	const [activeId, setActiveId] = useState<string | null>(null);
+	const [canvasSnippets, setCanvasSnippets] = useState<React.ReactElement[]>(
+		[]
+	);
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const handleDragStart = (event: any) => {
+		console.log("Starting drag of element with ID:", event.active.id);
 		setActiveId(event.active.id);
 	};
+
 	const handleDragEnd = (event: DragEndEvent) => {
+		console.log("Ending drag of element with ID:", activeId);
 		if (event.over?.id === "canvas") {
-			// Fire your custom event here
-			alert("Palette item dropped on canvas!");
+			handleSnippetDrop(activeId);
+		}
+		setActiveId(null);
+	};
+
+	useEffect(() => {
+		console.log("Canvas snippets updated:", canvasSnippets);
+	}, [canvasSnippets]);
+
+	const handleSnippetDrop = (snippetId: string | null) => {
+		if (snippetId) {
+			const snippet = PALETTE_SNIPPETS[snippetId];
+			console.log("Dropping snippet:", snippet);
+			if (snippet) {
+				const uniqueKey = `${snippet.id}-${Date.now()}-${Math.random()}`;
+				const rendered = renderSnippet(
+					{ ...snippet, id: uniqueKey },
+					false
+				);
+				if (rendered) {
+					setCanvasSnippets((prev) => [...prev, rendered]);
+				}
+			}
 		}
 	};
 
 	return (
-		<main className="flex min-h-screen items-center justify-center font-sans">
+		<main className="flex min-h-screen px-16 items-center justify-center font-sans">
 			<DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-				<BaseSnippet name="Test Snippet">
-					<span>Snippet content</span>
-				</BaseSnippet>
-				<Canvas onSnippetDrop={() => {}} className="size-full" />
 				<DragOverlay>
-					{activeId ? (
-						<BaseSnippet
-							name="Test Snippet"
-							className="pointer-events-none opacity-80"
-						>
-							<span>Snippet content</span>
-						</BaseSnippet>
-					) : null}
+					{activeId
+						? (() => {
+								const snippet = PALETTE_SNIPPETS[activeId];
+								console.log("DragOverlay snippet:", snippet);
+								if (snippet) {
+									return renderSnippet(snippet, true);
+								}
+								return null;
+							})()
+						: null}
 				</DragOverlay>
+				<div className="flex flex-col w-full">
+					<Canvas
+						onSnippetDrop={handleSnippetDrop}
+						className="size-full"
+						snippets={canvasSnippets}
+					/>
+					<Palette />
+				</div>
 			</DndContext>
 		</main>
 	);
