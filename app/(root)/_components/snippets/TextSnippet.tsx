@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { BaseSnippet, BaseSnippetProps } from "../BaseSnippet";
 import { twClassMerge } from "~/app/utils/tailwind";
 import { SnippetIcon } from "~/app/lib/types";
@@ -21,6 +21,7 @@ export const TextSnippet: FC<TextSnippetProps> = ({
 	onRemove,
 	...props
 }) => {
+	const [value, setValue] = useState(text ?? "");
 	return (
 		<BaseSnippet
 			name={name}
@@ -31,7 +32,17 @@ export const TextSnippet: FC<TextSnippetProps> = ({
 			onRemove={onRemove}
 			{...props}
 		>
-			{text}
+			<textarea
+				className="w-full rounded resize-none placeholder-midground focus:outline-none focus:border-none"
+				value={value}
+				onChange={(e) => setValue(e.target.value)}
+				placeholder="Type something here..."
+				onInput={(e) => {
+					const target = e.target as HTMLTextAreaElement;
+					target.style.height = "auto";
+					target.style.height = `${target.scrollHeight}px`;
+				}}
+			/>
 		</BaseSnippet>
 	);
 };
