@@ -2,13 +2,14 @@
 "use client";
 
 import { useDroppable } from "@dnd-kit/core";
-
+import { renderSnippet } from "../_utils/snippets";
+import { SnippetData } from "~/app/lib/types";
 import { FC } from "react";
 import { twClassMerge } from "~/app/utils/tailwind";
 
 interface CanvasProps extends React.HTMLAttributes<HTMLDivElement> {
 	// Custom props go here
-	snippets?: React.ReactElement[];
+	snippets?: SnippetData[];
 	onSnippetDrop?: (snippetId: string | null) => void;
 }
 
@@ -23,7 +24,7 @@ export const Canvas: FC<CanvasProps> = ({
 	return (
 		<div id="canvas" className={twClassMerge(className)}>
 			<div id="canvas-snippets" className="flex flex-col w-full">
-				{snippets}
+				{snippets?.map((snippet, idx) => renderSnippet(snippet, false))}
 			</div>
 			<div
 				id="canvas-dropzone"

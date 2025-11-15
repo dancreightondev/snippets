@@ -6,12 +6,11 @@ import { useState, useEffect } from "react";
 import { Palette } from "./_components/Palette";
 import { PALETTE_SNIPPETS } from "~/app/lib/constants";
 import { renderSnippet } from "./_utils/snippets";
+import { SnippetData } from "~/app/lib/types";
 
 export default function Home() {
 	const [activeId, setActiveId] = useState<string | null>(null);
-	const [canvasSnippets, setCanvasSnippets] = useState<React.ReactElement[]>(
-		[]
-	);
+	const [canvasSnippets, setCanvasSnippets] = useState<SnippetData[]>([]);
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const handleDragStart = (event: any) => {
@@ -33,12 +32,9 @@ export default function Home() {
 
 	const handleSnippetDrop = (snippetId: string | null) => {
 		if (snippetId) {
-			const snippet = PALETTE_SNIPPETS[snippetId]; // snippetId is now always type
+			const snippet = PALETTE_SNIPPETS[snippetId];
 			if (snippet) {
-				const rendered = renderSnippet(snippet, false);
-				if (rendered) {
-					setCanvasSnippets((prev) => [...prev, rendered]);
-				}
+				setCanvasSnippets((prev) => [...prev, snippet]);
 			}
 		}
 	};
