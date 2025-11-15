@@ -3,8 +3,8 @@ import {
 	Atkinson_Hyperlegible_Next,
 	Atkinson_Hyperlegible_Mono,
 } from "next/font/google";
-import "../styles/globals.css";
-import { APP_NAME } from "../lib/constants";
+import "~/app/styles/globals.css";
+import { APP_NAME } from "~/app/lib/constants";
 
 const ahlSans = Atkinson_Hyperlegible_Next({
 	variable: "--font-atkinson-hl-sans",
