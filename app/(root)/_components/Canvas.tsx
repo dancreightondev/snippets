@@ -11,12 +11,14 @@ interface CanvasProps extends React.HTMLAttributes<HTMLDivElement> {
 	// Custom props go here
 	snippets?: SnippetData[];
 	onSnippetDrop?: (snippetId: string | null) => void;
+	onSnippetRemove?: (index: number) => void;
 }
 
 export const Canvas: FC<CanvasProps> = ({
 	className,
 	snippets,
 	onSnippetDrop,
+	onSnippetRemove,
 	...props
 }) => {
 	const { setNodeRef, isOver } = useDroppable({ id: "canvas" });

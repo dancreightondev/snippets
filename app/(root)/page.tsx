@@ -39,6 +39,10 @@ export default function Home() {
 		}
 	};
 
+	const handleSnippetRemove = (index: number) => {
+		setCanvasSnippets((prev) => prev.filter((_, i) => i !== index));
+	};
+
 	return (
 		<main className="flex min-h-screen px-16 items-center justify-center font-sans">
 			<DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
@@ -57,6 +61,7 @@ export default function Home() {
 				<div className="flex flex-col w-full">
 					<Canvas
 						onSnippetDrop={handleSnippetDrop}
+						onSnippetRemove={handleSnippetRemove}
 						className="size-full"
 						snippets={canvasSnippets}
 					/>
