@@ -3,7 +3,13 @@ import { v } from "convex/values";
 
 export default defineSchema({
 	snippets: defineTable({
-		name: v.string(), // the user-facing name of the snippet
-		type: v.string(), // the code-facing name of the snippet, used to determine what to render
+		name: v.string(),
+		id: v.string(),
+		instanceId: v.optional(v.string()),
+		text: v.optional(v.string()),
+		code: v.optional(v.string()),
+		items: v.optional(v.array(v.string())),
+		currentXp: v.optional(v.number()),
+		targetXp: v.optional(v.number()),
 	}),
 });
