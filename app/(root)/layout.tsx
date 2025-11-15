@@ -9,11 +9,13 @@ import { APP_NAME } from "~/app/lib/constants";
 const ahlSans = Atkinson_Hyperlegible_Next({
 	variable: "--font-atkinson-hl-sans",
 	subsets: ["latin"],
+	fallback: ["Arial", "sans-serif"],
 });
 
 const ahlMono = Atkinson_Hyperlegible_Mono({
 	variable: "--font-atkinson-hl-mono",
 	subsets: ["latin"],
+	fallback: ["Courier New", "monospace"],
 });
 
 export const metadata: Metadata = {
