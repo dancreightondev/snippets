@@ -4,6 +4,7 @@ import {
 	Atkinson_Hyperlegible_Mono,
 } from "next/font/google";
 import "../styles/globals.css";
+import { APP_NAME } from "../lib/constants";
 
 const ahlSans = Atkinson_Hyperlegible_Next({
 	variable: "--font-atkinson-hl-sans",
@@ -16,7 +17,7 @@ const ahlMono = Atkinson_Hyperlegible_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "Disencumba",
+	title: APP_NAME,
 };
 
 export default function RootLayout({
