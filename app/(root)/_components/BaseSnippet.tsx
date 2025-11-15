@@ -5,7 +5,7 @@ import { FC, isValidElement } from "react";
 import { twClassMerge } from "~/app/utils/tailwind";
 import { SnippetIcon } from "~/app/lib/types";
 import { useDraggable } from "@dnd-kit/core";
-import { BsFillQuestionCircleFill } from "react-icons/bs";
+import { TbQuestionMark } from "react-icons/tb";
 
 export interface BaseSnippetProps extends React.HTMLAttributes<HTMLDivElement> {
 	// Custom props go here
@@ -56,7 +56,7 @@ export const BaseSnippet: FC<BaseSnippetProps> = ({
 							{icon}
 						</span>
 					) : (
-						<BsFillQuestionCircleFill className="size-full" />
+						<TbQuestionMark className="size-full" />
 					)}
 				</span>
 			</div>
