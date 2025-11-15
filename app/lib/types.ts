@@ -1,7 +1,9 @@
 export type SnippetIcon = string | React.ReactElement;
 export interface SnippetData {
-	id: string;
 	name: string;
+	id: string;
+
+	// These props are not used by all snippets
 	text?: string;
 	code?: string;
 	items?: string[];
