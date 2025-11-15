@@ -11,7 +11,7 @@ interface CanvasProps extends React.HTMLAttributes<HTMLDivElement> {
 	// Custom props go here
 	snippets?: SnippetData[];
 	onSnippetDrop?: (snippetId: string | null) => void;
-	onSnippetRemove?: (index: number) => void;
+	onSnippetRemove?: (instanceId: string) => void;
 }
 
 export const Canvas: FC<CanvasProps> = ({
@@ -26,7 +26,11 @@ export const Canvas: FC<CanvasProps> = ({
 	return (
 		<div id="canvas" className={twClassMerge(className)}>
 			<div id="canvas-snippets" className="flex flex-col w-full">
-				{snippets?.map((snippet, idx) => renderSnippet(snippet, false))}
+				{snippets?.map((snippet) => (
+					<div key={snippet.instanceId} className="relative group">
+						{renderSnippet(snippet, false)}
+					</div>
+				))}
 			</div>
 			<div
 				id="canvas-dropzone"

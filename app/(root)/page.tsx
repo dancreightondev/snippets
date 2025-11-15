@@ -7,6 +7,7 @@ import { Palette } from "./_components/Palette";
 import { PALETTE_SNIPPETS } from "~/app/lib/constants";
 import { renderSnippet } from "./_utils/snippets";
 import { SnippetData } from "~/app/lib/types";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Home() {
 	const [activeId, setActiveId] = useState<string | null>(null);
@@ -34,13 +35,16 @@ export default function Home() {
 		if (snippetId) {
 			const snippet = PALETTE_SNIPPETS[snippetId];
 			if (snippet) {
-				setCanvasSnippets((prev) => [...prev, snippet]);
+				const instanceSnippet = { ...snippet, instanceId: uuidv4() };
+				setCanvasSnippets((prev) => [...prev, instanceSnippet]);
 			}
 		}
 	};
 
-	const handleSnippetRemove = (index: number) => {
-		setCanvasSnippets((prev) => prev.filter((_, i) => i !== index));
+	const handleSnippetRemove = (instanceId: string) => {
+		setCanvasSnippets((prev) =>
+			prev.filter((s) => s.instanceId !== instanceId)
+		);
 	};
 
 	return (
