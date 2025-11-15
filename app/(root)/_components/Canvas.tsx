@@ -31,7 +31,16 @@ export const Canvas: FC<CanvasProps> = ({
 			>
 				{snippets?.map((snippet) => (
 					<div key={snippet.instanceId} className="relative group">
-						{renderSnippet(snippet, false)}
+						{renderSnippet(
+							snippet,
+							false,
+							snippet.instanceId
+								? () =>
+										onSnippetRemove?.(
+											snippet.instanceId as string
+										)
+								: undefined
+						)}
 					</div>
 				))}
 			</div>

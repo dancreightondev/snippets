@@ -13,6 +13,7 @@ export interface BaseSnippetProps extends React.HTMLAttributes<HTMLDivElement> {
 	icon?: SnippetIcon;
 	paletted?: boolean;
 	draggableId: string;
+	onRemove?: () => void;
 }
 
 export const BaseSnippet: FC<BaseSnippetProps> = ({
@@ -22,6 +23,7 @@ export const BaseSnippet: FC<BaseSnippetProps> = ({
 	children,
 	className,
 	draggableId,
+	onRemove,
 	...props
 }) => {
 	const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
@@ -91,6 +93,7 @@ export const BaseSnippet: FC<BaseSnippetProps> = ({
 						<button
 							id="snippet-remove"
 							className="hover:cursor-pointer hover:text-danger"
+							onClick={onRemove}
 						>
 							<TbX />
 						</button>

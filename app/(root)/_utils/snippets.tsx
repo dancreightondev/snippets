@@ -4,17 +4,19 @@ import { v4 as uuidv4 } from "uuid";
 
 type SnippetRenderer = (
 	snippet: SnippetData,
-	paletted: boolean
+	paletted: boolean,
+	onRemove?: () => void
 ) => React.ReactElement | null;
 
 const SNIPPET_RENDERERS: Record<string, SnippetRenderer> = {
-	textSnippet: (snippet, paletted) => (
+	textSnippet: (snippet, paletted, onRemove) => (
 		<TextSnippet
 			key={uuidv4()}
 			draggableId={snippet.id}
 			name={snippet.name}
 			text={snippet.text}
 			paletted={paletted}
+			onRemove={onRemove}
 		/>
 	),
 
@@ -31,7 +33,11 @@ const SNIPPET_RENDERERS: Record<string, SnippetRenderer> = {
 	*/
 };
 
-export function renderSnippet(snippet: SnippetData, paletted: boolean) {
+export function renderSnippet(
+	snippet: SnippetData,
+	paletted: boolean,
+	onRemove?: () => void
+) {
 	const renderer = SNIPPET_RENDERERS[snippet.id];
-	return renderer ? renderer(snippet, paletted) : null;
+	return renderer ? renderer(snippet, paletted, onRemove) : null;
 }
