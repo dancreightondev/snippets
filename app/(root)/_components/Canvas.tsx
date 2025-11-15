@@ -25,7 +25,10 @@ export const Canvas: FC<CanvasProps> = ({
 
 	return (
 		<div id="canvas" className={twClassMerge(className)}>
-			<div id="canvas-snippets" className="flex flex-col w-full">
+			<div
+				id="canvas-snippets"
+				className="flex flex-col w-full max-w-3xl mx-auto"
+			>
 				{snippets?.map((snippet) => (
 					<div key={snippet.instanceId} className="relative group">
 						{renderSnippet(snippet, false)}
