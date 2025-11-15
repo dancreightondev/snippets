@@ -38,7 +38,7 @@ export const Canvas: FC<CanvasProps> = ({
 			<div
 				id="canvas-dropzone"
 				className={twClassMerge(
-					"min-h-[100px] rounded-xl transition flex items-center justify-center",
+					"min-h-[100px] rounded-xl transition flex items-center justify-center mt-2 mb-4",
 					isOver
 						? "border-primary border-3 border-dashed bg-primary/25"
 						: ""
