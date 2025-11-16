@@ -13,7 +13,7 @@ export const Palette: FC<PaletteProps> = ({ className, ...props }) => {
 		<div
 			className={twClassMerge(
 				className,
-				"w-96 mx-auto flex justify-center items-center"
+				"w-96 mx-auto flex justify-center items-center gap-4"
 			)}
 			{...props}
 		>
