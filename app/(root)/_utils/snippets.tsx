@@ -1,6 +1,7 @@
 import { SnippetData } from "~/app/lib/types";
 import { TextSnippet } from "../_components/snippets/TextSnippet";
 import { v4 as uuidv4 } from "uuid";
+import { ChecklistSnippet } from "../_components/snippets/ChecklistSnippet";
 
 type SnippetRenderer = (
 	snippet: SnippetData,
@@ -15,6 +16,15 @@ const SNIPPET_RENDERERS: Record<string, SnippetRenderer> = {
 			draggableId={snippet.id}
 			name={snippet.name}
 			text={snippet.text}
+			paletted={paletted}
+			onRemove={onRemove}
+		/>
+	),
+	checklistSnippet: (snippet, paletted, onRemove) => (
+		<ChecklistSnippet
+			key={uuidv4()}
+			draggableId={snippet.id}
+			name={snippet.name}
 			paletted={paletted}
 			onRemove={onRemove}
 		/>
