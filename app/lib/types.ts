@@ -11,3 +11,7 @@ export interface SnippetData {
 	currentXp?: number;
 	targetXp?: number;
 }
+export interface ChecklistItemData {
+	text: string;
+	checked: boolean;
+}
