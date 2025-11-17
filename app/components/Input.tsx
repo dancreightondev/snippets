@@ -41,12 +41,12 @@ interface InputProps
 }
 
 export const Input: FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
-	({ className, displaySize, rounded, ...props }, ref) => {
+	({ className, appearance, displaySize, rounded, ...props }, ref) => {
 		return (
 			<input
 				ref={ref}
 				className={twClassMerge(
-					variants({ displaySize, rounded, className })
+					variants({ appearance, displaySize, rounded, className })
 				)}
 				{...props}
 			/>
