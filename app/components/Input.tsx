@@ -8,7 +8,7 @@ const variants = cva(
 		variants: {
 			appearance: {
 				filled: "bg-foreground/5 focus:ring-2 focus:inset-ring-2",
-				outlined: "border focus:ring-2",
+				outlined: "border border-midground focus:ring-2",
 				none: "bg-transparent",
 			},
 			displaySize: {
