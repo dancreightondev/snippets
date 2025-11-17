@@ -9,6 +9,7 @@ const variants = cva(
 			appearance: {
 				filled: "bg-foreground/5 focus:ring-2 focus:inset-ring-2",
 				outlined: "border focus:ring-2",
+				none: "bg-transparent",
 			},
 			displaySize: {
 				sm: "px-3 py-1 text-sm",
@@ -25,7 +26,12 @@ const variants = cva(
 				full: "rounded-full",
 			},
 		},
-		compoundVariants: [],
+		compoundVariants: [
+			{ appearance: "none", displaySize: "sm", class: "p-0" },
+			{ appearance: "none", displaySize: "md", class: "p-0" },
+			{ appearance: "none", displaySize: "lg", class: "p-0" },
+			{ appearance: "none", displaySize: "xl", class: "p-0" },
+		],
 		defaultVariants: {
 			appearance: "filled",
 			displaySize: "md",
