@@ -1,7 +1,8 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { twClassMerge } from "~/app/utils/tailwind";
 import { ChecklistItemData } from "~/app/lib/types";
 import { Checkbox } from "~/app/components/Checkbox";
+import { TbPlus } from "react-icons/tb";
 
 interface ChecklistItemProps extends React.HTMLAttributes<HTMLDivElement> {
 	// Custom props go here
@@ -30,11 +31,34 @@ export const Checklist: FC<ChecklistProps> = ({
 	className,
 	...props
 }) => {
+	const [checklistItems, setChecklistItems] = useState<ChecklistItemData[]>(
+		items ?? []
+	);
+
+	const handleAddChecklistItem = (item: ChecklistItemData) => {
+		setChecklistItems((prevItems) => [...prevItems, item]);
+	};
+
 	return (
 		<div className={twClassMerge(className)} {...props}>
-			<ChecklistItem
-				itemData={{ text: "Checklist item text", checked: false }}
-			/>
+			{checklistItems.map((item, index) => (
+				<ChecklistItem key={index} itemData={item} />
+			))}
+			<button
+				id="add-item-button"
+				className="hover:cursor-pointer"
+				onClick={() =>
+					handleAddChecklistItem({
+						text: "Checklist item text",
+						checked: false,
+					})
+				}
+			>
+				<div className="flex flex-row">
+					<TbPlus />
+					<span>List item</span>
+				</div>
+			</button>
 		</div>
 	);
 };
