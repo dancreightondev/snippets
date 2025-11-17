@@ -16,7 +16,7 @@ const ChecklistItem: FC<ChecklistItemProps> = ({
 }) => {
 	return (
 		<div className={twClassMerge(className)} {...props}>
-			<Checkbox label={itemData.text} />
+			<Checkbox label={itemData.text} editable />
 		</div>
 	);
 };
@@ -40,7 +40,13 @@ export const Checklist: FC<ChecklistProps> = ({
 	};
 
 	return (
-		<div className={twClassMerge(className)} {...props}>
+		<div
+			className={twClassMerge(
+				className,
+				"flex flex-col transition duration-60"
+			)}
+			{...props}
+		>
 			{checklistItems.map((item, index) => (
 				<ChecklistItem key={index} itemData={item} />
 			))}
@@ -49,14 +55,14 @@ export const Checklist: FC<ChecklistProps> = ({
 				className="hover:cursor-pointer"
 				onClick={() =>
 					handleAddChecklistItem({
-						text: "Checklist item text",
+						text: "New thing to do",
 						checked: false,
 					})
 				}
 			>
-				<div className="flex flex-row">
+				<div className="flex flex-row items-center text-midground hover:text-foreground">
 					<TbPlus />
-					<span>List item</span>
+					<span className="ms-2">List item</span>
 				</div>
 			</button>
 		</div>
