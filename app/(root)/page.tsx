@@ -1,6 +1,11 @@
 "use client";
 
-import { DndContext, DragEndEvent, DragOverlay } from "@dnd-kit/core";
+import {
+	DndContext,
+	DragEndEvent,
+	DragOverlay,
+	DragStartEvent,
+} from "@dnd-kit/core";
 import { Canvas } from "./_components/Canvas";
 import { useState, useEffect } from "react";
 import { Palette } from "./_components/Palette";
@@ -13,10 +18,9 @@ export default function Home() {
 	const [activeId, setActiveId] = useState<string | null>(null);
 	const [canvasSnippets, setCanvasSnippets] = useState<SnippetData[]>([]);
 
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const handleDragStart = (event: any) => {
+	const handleDragStart = (event: DragStartEvent) => {
 		console.log("Starting drag of element with ID:", event.active.id);
-		setActiveId(event.active.id);
+		setActiveId(event.active.id as string);
 	};
 
 	const handleDragEnd = (event: DragEndEvent) => {
